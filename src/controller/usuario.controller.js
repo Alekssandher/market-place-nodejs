@@ -68,11 +68,14 @@ const updateUserController = async (req, res) => {
 
 const removeUserController = async (req, res) => {
     try {
+
         const deletedUser = await userService.removeUserService(req.params.id)
 
-        if (deletedUser.deletedCount > 0) {
+        if (deletedUser) {
+            
             return res.status(200).send({message: 'usuario removido com sucesso'})
-        } else {
+        } else if (!deletedUser) {
+       
             return res.status(404).send({message: 'usuario não encontrado'})
         }
 

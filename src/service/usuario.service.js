@@ -1,3 +1,4 @@
+const { trusted } = require('mongoose')
 const Usuario = require('../model/Usuario')
 
 const findUserByIdService = (id) => {
@@ -51,9 +52,10 @@ const removeAddressService = (id, addressId) => {
         }
     },
     {
-        new: true
-        
+        rawResult: true,
+    
     }
+   
 )
 }
 

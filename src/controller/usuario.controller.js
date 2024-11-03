@@ -107,14 +107,17 @@ const addUserAddressController = async (req, res) => {
 
 const removeAddressController = async (req, res) => {
     try {
-       
-        const endereco = await userService.removeAddressService(req.body.id, req.body.addressId)
 
-        if (endereco) {
+        
+        const endereco = await userService.removeAddressService(req.body.id, req.body.addressId)
+        
+        const found = endereco.enderecos.some(endereco => endereco._id.toString() === req.body.addressId);
+
+        if (found) {
             res.status(200).send({message: 'endereço removido com sucesso'})
         }else {
 
-            res.status(400).send({message: 'endereço não removido, algo deu errado'})
+            res.status(400).send({message: 'endereço não encontrado'})
         }
 
     }catch(error) {

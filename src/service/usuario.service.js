@@ -1,4 +1,4 @@
-const { trusted } = require('mongoose')
+
 const Usuario = require('../model/Usuario')
 
 const findUserByIdService = (id) => {

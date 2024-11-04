@@ -1,0 +1,41 @@
+const jwt = require('jsonwebtoken')
+const {findUserByIdService} = require('../service/usuario.service')
+
+module.exports = async (req, res, next) => {
+    const authHeader = req.headers.authorization
+
+    if (!authHeader){
+        return res.status(401).send({message: 'token não informado'})
+    }
+
+    const parts = authHeader.split(' ')
+
+    if (parts.length != 2) {
+        console.log('lenght: ', parts.lenght)
+        return res.status(401).send({message: 'token invalido'})
+    }
+
+    const [schema, token] = parts
+
+    if (!/^Bearer$/i.test(schema)){
+        console.log('problema no bearer')
+        return res.status(401).send({message: 'token malformado'})
+    }
+
+    jwt.verify(token, ',Lf~u:v.54!RT{^${Kw.Ob<F12]O<jlA/-/KeIf4XqL\UR#xabbh3e>', async (error, decoded) => {
+        if (error) {
+            console.log(`erro: ${error}`)
+            return res.status(500).send({message: 'token invalido'})
+        }
+
+        const user = await findUserByIdService(decoded.id)
+
+        if (!user ){
+            console.log('problema na ultima verificação')
+            return res.status(401).send({message: 'token invalido'})
+        }
+        req.userId = decoded.id
+
+        return next()
+    })
+}

@@ -13,6 +13,6 @@ router.put('/update/:id', usuarioController.updateUserController)
 
 router.delete('/remove/:id', usuarioController.removeUserController)
 router.delete('/removeAddress/', usuarioController.removeAddressController)
-router.delete('removeFavProduct/', usuarioController.removeUserFavProductController)
+router.delete('/removeFavProduct/', usuarioController.removeUserFavProductController)
 
 module.exports = router

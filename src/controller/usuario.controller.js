@@ -70,7 +70,7 @@ const removeUserController = async (req, res) => {
     try {
 
         const deletedUser = await userService.removeUserService(req.params.id)
-
+        
         if (deletedUser == null) {
             
             return res.status(404).send({message: 'usuario não encontrado'})
@@ -92,10 +92,13 @@ const addUserAddressController = async (req, res) => {
         req.body.createdAt = new Date()
         const endereco = await userService.addUserAddressService(req.params.id, req.body)
 
+        console.log(endereco)
+
         if (endereco) {
-            res.status(201).send({message: 'endereço adicionado com sucesso'})
-        }else {
             res.status(400).send({message: 'endereço não adicionado, algo deu errado'})
+           
+        }else {
+            res.status(201).send({message: 'endereço adicionado com sucesso'})
         }
     }catch(error) {
 
@@ -110,7 +113,7 @@ const removeAddressController = async (req, res) => {
 
         
         const endereco = await userService.removeAddressService(req.body.id, req.body.addressId)
-        
+        console.log(endereco)
         const found = endereco.enderecos.some(endereco => endereco._id.toString() === req.body.addressId);
 
         if (found) {

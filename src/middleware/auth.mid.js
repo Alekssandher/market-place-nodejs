@@ -1,3 +1,4 @@
+require('dotenv')
 const jwt = require('jsonwebtoken')
 const {findUserByIdService} = require('../service/usuario.service')
 
@@ -22,7 +23,7 @@ module.exports = async (req, res, next) => {
         return res.status(401).send({message: 'token malformado'})
     }
 
-    jwt.verify(token, ',Lf~u:v.54!RT{^${Kw.Ob<F12]O<jlA/-/KeIf4XqL\UR#xabbh3e>', async (error, decoded) => {
+    jwt.verify(token, process.env.SECRET, async (error, decoded) => {
         if (error) {
             console.log(`erro: ${error}`)
             return res.status(500).send({message: 'token invalido'})

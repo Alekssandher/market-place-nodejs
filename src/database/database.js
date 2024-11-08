@@ -1,7 +1,10 @@
 const mongoose = require('mongoose')
+require('dotenv').config();
+const { URLDATABASE } = process.env;
 
 function connectToDatabase() {
-    mongoose.connect(process.env.URLDATABASE, {
+    console.log("URLDATABASE: ", URLDATABASE)
+    mongoose.connect(URLDATABASE, {
         useNewUrlParser: true,
         useUnifiedTopology: true
 

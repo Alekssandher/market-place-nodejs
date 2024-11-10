@@ -5,7 +5,7 @@ const ProdutoSchema = new mongoose.Schema ({
     descricao: {type: String, unique: false, required: true},
     precoUnitario: {type: Number, unique: false, required: true},
     imagem: {type: String, unique: false, required: true},
-    codigoBarra: {type: Number, unique: true, required: true},
+    codigoBarra: {type: Number, unique: true, required: true}
     // categoria: [
     //     {
     //         _id: {type: mongoose.Schema.Types.ObjectId, required: true, unique: true, ref: "categorias"},

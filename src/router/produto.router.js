@@ -7,7 +7,7 @@ router.get("/find/:id", authMiddleware, produtoController.findProductByIdControl
 router.get("/findAll/", authMiddleware, produtoController.findAllProductController)
 
 router.post("/createProduct/", authMiddleware, produtoController.createProductController)
-router.post("/update/:id", authMiddleware, produtoController.updateProductController)
+router.put("/update/:id", authMiddleware, produtoController.updateProductController)
 
 router.delete("/delete/:id", authMiddleware, produtoController.deleteProductController)
 

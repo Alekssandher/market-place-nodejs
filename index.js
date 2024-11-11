@@ -8,7 +8,7 @@ const connectToDatabase = require('./src/database/database')
 const authRouter = require('./src/router/auth.router')
 const usuario = require('./src/router/usuario.router')
 const produtoRouter = require('./src/router/produto.router')
-
+const categoriaRouter = require('./src/router/categoria.router')
 const app = express()
 
 const port = 3000
@@ -20,6 +20,7 @@ connectToDatabase()
 app.use('/usuario', usuario)
 app.use('/auth', authRouter)
 app.use('/produto', produtoRouter)
+app.use('/categoria', categoriaRouter)
 
 app.get('/', (req, res) => {
     res.send({message: 'rodando'})

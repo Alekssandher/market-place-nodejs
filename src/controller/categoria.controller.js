@@ -34,9 +34,11 @@ const createCategoriaController = async (req, res) => {
 
 const updateCategoriaController = async (req, res) => {
     try {
-        res.status(200).send(await categoriaService.updateCategoriaService(req.prams.id, req.params.body))
+        res.status(200).send(await categoriaService.updateCategoriaService(req.params.id, req.body))
+        console.log(req.params.body)
     } catch (error) {
         console.log(`Erro no updateCategoriaController: ${error}`)
+        
         return res.status(500).send({message: "Erro inesperado, tente novamente"})
     }
 }

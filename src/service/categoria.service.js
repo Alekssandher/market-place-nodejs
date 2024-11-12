@@ -13,11 +13,11 @@ const createCategoriaService = (body) => {
 }
 
 const updateCategoriaService = (id, body) => {
-    return Categoria.findByIdAndUpdate(id, body, {returnDocument: after})
+    return Categoria.findByIdAndUpdate(id, body, {returnDocument: "after"})
 }
 
 const deleteCategoriaService = (id) => {
-    return Categoria.findByIdAndRemove(id)
+    return Categoria.findByIdAndDelete(id)
 }
 
 module.exports = {

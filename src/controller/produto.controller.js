@@ -54,7 +54,7 @@ const addCategoriaProdutoController = async (req, res) => {
     try {   
         req.body.createdAt = new Date()
         const categoria = await produtoService.addCategoriaProdutoService(req.params.id, req.body)
-
+        res.status(200).send(categoria)
 
     } catch (error) {
         console.log("Deu erro no addCategoriaProdutoController: ", error)
@@ -64,8 +64,8 @@ const addCategoriaProdutoController = async (req, res) => {
 
 const removeCategoriaProdutoController = async (req, res) => {
     try {   
-        const categoria = await produtoService.removeCategoriaProdutoService(req.body)
-
+        const categoria = await produtoService.deleteCategoriaProdutoService(req.params.id, req.body)
+        res.status(200).send(categoria)
     } catch (error) {
         console.log("Deu erro no addCategoriaProdutoController: ", error)
         return res.status(500).send({message: "Algo inesperado aconteceu, tente novamente"})

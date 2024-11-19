@@ -22,8 +22,7 @@ const createProductController = async (req, res) => {
     try {
         const corpo = {
             ...req.body,
-            userId: req.userId,
-            createdAt: new Date()
+            userId: req.userId
         }
         res.send(await produtoService.createProductService(corpo))
     } catch (error) {
@@ -52,7 +51,7 @@ const deleteProductController = async (req, res) => {
 
 const addCategoriaProdutoController = async (req, res) => {
     try {   
-        req.body.createdAt = new Date()
+        
         const categoria = await produtoService.addCategoriaProdutoService(req.params.id, req.body)
         res.status(200).send(categoria)
 

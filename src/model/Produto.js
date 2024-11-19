@@ -6,10 +6,10 @@ const ProdutoSchema = new mongoose.Schema ({
     precoUnitario: {type: Number, unique: false, required: true},
     imagem: {type: String, unique: false, required: true},
     codigoBarra: {type: Number, unique: true, required: true},
-    categoria: [
+    categorias: [
         {
             _id: {type: mongoose.Schema.Types.ObjectId, required: true, unique: true, ref: "categorias"},
-            createdAt: {type: Date, unique: false, required: true}
+            createdAt: {type: Date, unique: false, required: true, default: Date.now()}
         },
     ],
 })

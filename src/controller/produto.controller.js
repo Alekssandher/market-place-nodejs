@@ -53,6 +53,7 @@ const addCategoriaProdutoController = async (req, res) => {
     try {   
         
         const categoria = await produtoService.addCategoriaProdutoService(req.params.id, req.body)
+        console.log(req.body)
         res.status(200).send(categoria)
 
     } catch (error) {

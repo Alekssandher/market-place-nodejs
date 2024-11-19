@@ -44,6 +44,7 @@ const updateCarrinhoController = async (req, res) => {
 const deleteCarrinhoController = async (req, res) => {
     try {
         res.status(200).send(await carrinhoService.deleteCarrinhoService(req.params.id))
+        console.log("deletado")
     } catch (error) {
         console.log("Deu erro no deleteCarrinhoController\nErro: ",error)
         res.status(500).send({message: "Erro inesperado, tente novamente"})

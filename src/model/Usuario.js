@@ -16,12 +16,12 @@ const usuarioSchema = new mongoose.Schema({
         }
     ],
     createdAt: {type: Date, required: true, default: Date.now()},
-    // favoriteProducts: [
-    //     {
-    //         id: {type: mongoose.Schema.Types.ObjectId, required: true, unique: true, ref: 'produtos' },
-    //         createdAt: { type: Date, requried: true, default: Date.now()}
-    //     }
-    // ],
+    favoriteProducts: [
+        {
+            id: {type: mongoose.Schema.Types.ObjectId, unique: true, ref: 'produtos' },
+            createdAt: { type: Date, requried: true, default: Date.now()}
+        }
+    ],
     admin: {type: Boolean, required: true, default: false}
 })
 usuarioSchema.pre('save', async function(next){

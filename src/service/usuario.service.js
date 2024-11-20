@@ -60,12 +60,42 @@ const removeAddressService = (id, addressId) => {
 )
 }
 
-const addFavProductService = (id, product) => {
-
+const addFavProductService = (id, produto) => {
+    return Usuario.findOneAndUpdate(
+        {
+            _id: id
+        },
+        {
+            $push: {
+                favoriteProducts: {
+                    _id: produto.id
+                }
+            }
+        },
+        {
+            includeResultMetadata: true,
+            new: true
+        }
+    )
 }
 
-const removeFavProductService = () => {
-
+const removeFavProductService = (id, produto) => {
+    return Usuario.findOneAndUpdate(
+        {
+            _id: id
+        },
+        {
+            $pull: {
+                favoriteProducts: {
+                    _id: produto.id
+                }
+            }
+        },
+        {
+            includeResultMetadata: true,
+            new: true
+        }
+    )
 }
 
 module.exports = {

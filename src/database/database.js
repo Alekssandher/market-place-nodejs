@@ -5,9 +5,7 @@ const { URLDATABASE } = process.env;
 function connectToDatabase() {
     console.log("URLDATABASE: ", URLDATABASE)
     mongoose.connect(URLDATABASE, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-
+        
     }).then(() => {
         console.log("database connected")
     }).catch((error) => {

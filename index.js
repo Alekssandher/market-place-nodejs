@@ -10,7 +10,7 @@ const usuario = require('./src/router/usuario.router')
 const produtoRouter = require('./src/router/produto.router')
 const categoriaRouter = require('./src/router/categoria.router')
 const carrinhoRouter = require('./src/router/carrinho.router')
-
+const pedidoRouter = require('./src/router/pedido.router')
 const app = express()
 
 const port = 3000
@@ -24,6 +24,7 @@ app.use('/auth', authRouter)
 app.use('/produto', produtoRouter)
 app.use('/categoria', categoriaRouter)
 app.use('/carrinho/', carrinhoRouter)
+app.use('/pedido', pedidoRouter)
 
 app.get('/', (req, res) => {
     res.send({message: 'rodando'})

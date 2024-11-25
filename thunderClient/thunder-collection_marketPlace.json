@@ -1,0 +1,212 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "marketPlace",
+    "collectionId": "4cd5cacd-004b-4f56-a9d2-17bf9d309aca",
+    "dateExported": "2024-11-25T11:49:39.182Z",
+    "version": "1.2",
+    "folders": [
+        {
+            "_id": "a4c7c849-75dc-4702-a26e-0886eb0f4cb0",
+            "name": "user",
+            "containerId": "",
+            "created": "2024-11-22T14:43:34.171Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "a4baef88-9773-41f6-bec1-010a9ac34e4b",
+            "name": "categoria",
+            "containerId": "",
+            "created": "2024-11-22T14:44:15.818Z",
+            "sortNum": 40000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "e6cb1626-9639-4293-b6ee-3a67827101f7",
+            "colId": "4cd5cacd-004b-4f56-a9d2-17bf9d309aca",
+            "containerId": "a4c7c849-75dc-4702-a26e-0886eb0f4cb0",
+            "name": "createUser",
+            "url": "http://localhost:3000/usuario/create/",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-11-04T01:03:42.840Z",
+            "modified": "2024-11-20T12:44:21.661Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nome\": \"Alek\",\n  \"email\": \"alekssandher1@hotmail.com\",\n  \"senha\": \"1234\",\n  \"imagem\": \"asdasd.jpg\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "eb126e6d-ee14-4402-affd-4851ae74811a",
+            "colId": "4cd5cacd-004b-4f56-a9d2-17bf9d309aca",
+            "containerId": "a4baef88-9773-41f6-bec1-010a9ac34e4b",
+            "name": "findAll",
+            "url": "http://localhost:3000/categoria/findAll",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-11-22T14:44:29.484Z",
+            "modified": "2024-11-22T14:44:29.485Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MmNjZTU3YjQ0MmVlOGI2MjNlZGYwMiIsImlhdCI6MTczMDk5MTk3Nn0.n0GgfsLzU0W4CIyH902SvDCNsYFwQMu-rc6AaDisKR8"
+            }
+        },
+        {
+            "_id": "1a053011-8670-4744-9600-d20e07ee4265",
+            "colId": "4cd5cacd-004b-4f56-a9d2-17bf9d309aca",
+            "containerId": "a4c7c849-75dc-4702-a26e-0886eb0f4cb0",
+            "name": "addAddress",
+            "url": "http://localhost:3000/usuario/addAddress/6728b6126dc76481c8a4375d",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-11-04T11:28:22.304Z",
+            "modified": "2024-11-04T12:17:55.352Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"rua\": \"Av Paris\",\n  \"numero\": 454,\n  \"cep\": \"11700080\"\n  \n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "74bd27a7-28a4-402d-ae11-b86f8b5dca09",
+            "colId": "4cd5cacd-004b-4f56-a9d2-17bf9d309aca",
+            "containerId": "a4baef88-9773-41f6-bec1-010a9ac34e4b",
+            "name": "findById",
+            "url": "http://localhost:3000/categoria/findById/67334b64b4cfb3e3f93ede56",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-11-22T14:44:30.992Z",
+            "modified": "2024-11-22T14:44:30.992Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MmNjZTU3YjQ0MmVlOGI2MjNlZGYwMiIsImlhdCI6MTczMDk5MTk3Nn0.n0GgfsLzU0W4CIyH902SvDCNsYFwQMu-rc6AaDisKR8"
+            }
+        },
+        {
+            "_id": "2b0e8e0d-ada7-4537-a570-7cb53ed3a3f1",
+            "colId": "4cd5cacd-004b-4f56-a9d2-17bf9d309aca",
+            "containerId": "a4c7c849-75dc-4702-a26e-0886eb0f4cb0",
+            "name": "findAll",
+            "url": "http://localhost:3000/usuario/findAll/",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-11-04T11:31:25.507Z",
+            "modified": "2024-11-20T12:29:04.081Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MmNjZTU3YjQ0MmVlOGI2MjNlZGYwMiIsImlhdCI6MTczMDk5MTk3Nn0.n0GgfsLzU0W4CIyH902SvDCNsYFwQMu-rc6AaDisKR8"
+            }
+        },
+        {
+            "_id": "fd15e2a2-462d-4693-9020-38d8152cb874",
+            "colId": "4cd5cacd-004b-4f56-a9d2-17bf9d309aca",
+            "containerId": "a4baef88-9773-41f6-bec1-010a9ac34e4b",
+            "name": "create",
+            "url": "http://localhost:3000/categoria/create/",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-11-22T14:44:36.369Z",
+            "modified": "2024-11-22T14:44:36.369Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nome\": \"Frutas\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MmNjZTU3YjQ0MmVlOGI2MjNlZGYwMiIsImlhdCI6MTczMDk5MTk3Nn0.n0GgfsLzU0W4CIyH902SvDCNsYFwQMu-rc6AaDisKR8"
+            }
+        },
+        {
+            "_id": "1e025350-273e-4717-9d5b-a9e6183a1bd9",
+            "colId": "4cd5cacd-004b-4f56-a9d2-17bf9d309aca",
+            "containerId": "a4c7c849-75dc-4702-a26e-0886eb0f4cb0",
+            "name": "removeAddress",
+            "url": "http://localhost:3000/usuario/removeAddress/",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2024-11-04T11:36:05.936Z",
+            "modified": "2024-11-04T12:27:09.742Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"id\": \"6728b6126dc76481c8a4375d\",\n  \"addressId\": \"6728b6f2aceb227fb80ce5b\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "eba7ccab-0d5d-442e-a870-199103e159ec",
+            "colId": "4cd5cacd-004b-4f56-a9d2-17bf9d309aca",
+            "containerId": "a4baef88-9773-41f6-bec1-010a9ac34e4b",
+            "name": "updated",
+            "url": "http://localhost:3000/categoria/update/67334b87b4cfb3e3f93ede5d",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2024-11-22T14:44:38.732Z",
+            "modified": "2024-11-22T14:44:38.732Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nome\": \"Video Games nova geração\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MmNjZTU3YjQ0MmVlOGI2MjNlZGYwMiIsImlhdCI6MTczMDk5MTk3Nn0.n0GgfsLzU0W4CIyH902SvDCNsYFwQMu-rc6AaDisKR8"
+            }
+        },
+        {
+            "_id": "45c57029-af3f-46d2-afd7-53f4a8e9ba4d",
+            "colId": "4cd5cacd-004b-4f56-a9d2-17bf9d309aca",
+            "containerId": "a4c7c849-75dc-4702-a26e-0886eb0f4cb0",
+            "name": "findbyid",
+            "url": "http://localhost:3000/usuario/findById/67281e015c31cd98d850c2a4",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2024-11-04T14:27:49.422Z",
+            "modified": "2024-11-04T14:28:40.285Z",
+            "headers": []
+        },
+        {
+            "_id": "a0788893-1307-4f4b-88e3-412919a5b3ea",
+            "colId": "4cd5cacd-004b-4f56-a9d2-17bf9d309aca",
+            "containerId": "a4baef88-9773-41f6-bec1-010a9ac34e4b",
+            "name": "delete",
+            "url": "http://localhost:3000/categoria/delete/67334b87b4cfb3e3f93ede5d",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2024-11-22T14:44:40.363Z",
+            "modified": "2024-11-22T14:44:40.363Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MmNjZTU3YjQ0MmVlOGI2MjNlZGYwMiIsImlhdCI6MTczMDk5MTk3Nn0.n0GgfsLzU0W4CIyH902SvDCNsYFwQMu-rc6AaDisKR8"
+            }
+        },
+        {
+            "_id": "b83009ba-bb7b-4dca-a187-79c72ce364df",
+            "colId": "4cd5cacd-004b-4f56-a9d2-17bf9d309aca",
+            "containerId": "a4c7c849-75dc-4702-a26e-0886eb0f4cb0",
+            "name": "login",
+            "url": "http://localhost:3000/auth/login",
+            "method": "POST",
+            "sortNum": 60000,
+            "created": "2024-11-04T14:30:08.859Z",
+            "modified": "2024-11-20T12:44:41.778Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"alekssandher1@hotmail.com\",\n  \"senha\": \"1234\"\n}",
+                "form": []
+            }
+        }
+    ],
+    "ref": "LkkYZB6DA9fFpuXLabr2Sz9qdYxIVBcEnSauEe5ec_CQCiElCZBBzuZalcOX6L0Cv56yWgjsWv3KBgtkstwvFw"
+}

@@ -3,22 +3,22 @@ const router = express.Router()
 const usuarioController = require('../controller/usuario.controller')
 
 const authmiddleware = require('../middleware/auth.mid')
-const { validaUsuario } = require('../middleware/validacao.middleware')
+const { validaUsuario, validaId } = require('../middleware/validacao.middleware')
 // GET
-router.get('/findById/:id', authmiddleware, usuarioController.findUserByIdController)
+router.get('/findById/:id', authmiddleware, validaId, usuarioController.findUserByIdController)
 router.get('/findAll', authmiddleware, usuarioController.findAllUsersController)
 
 // POST
 router.post('/create', validaUsuario, usuarioController.createUserController)
-router.post('/addAddress/:id', authmiddleware, usuarioController.addUserAddressController)
-router.post('/addFavProduct/:id', authmiddleware, usuarioController.addUserFavProductController)
+router.post('/addAddress/:id', authmiddleware, validaId, usuarioController.addUserAddressController)
+router.post('/addFavProduct/:id', authmiddleware, validaId, usuarioController.addUserFavProductController)
 
 // PUT
-router.put('/update/:id', validaUsuario, usuarioController.updateUserController)
+router.put('/update/:id', validaUsuario, validaId, usuarioController.updateUserController)
 
 // DELETE
-router.delete('/remove/:id', authmiddleware, usuarioController.removeUserController)
+router.delete('/remove/:id', authmiddleware, validaId, usuarioController.removeUserController)
 router.delete('/removeAddress/', authmiddleware, usuarioController.removeAddressController)
-router.delete('/removeFavProduct/:id', authmiddleware, usuarioController.removeUserFavProductController)
+router.delete('/removeFavProduct/:id', authmiddleware, validaId, usuarioController.removeUserFavProductController)
 
 module.exports = router

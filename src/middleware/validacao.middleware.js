@@ -142,10 +142,20 @@ const validaCarrinho = (req, res, next) => {
     }
 }
 
+const ObjectId = require('mongoose').Types.ObjectId
+
+const validaId = (req, res, next) => {
+    if (ObjectId.isValid(req.params.id)) {
+        return next()
+    } else {
+        return res.status(400).send({message: 'O id passado não corresponde ao padrão necessário.'})
+    }
+}
 module.exports = {
     validaUsuario,
     validaProduto,
     validaCategoria,
     validaPedido, 
-    validaCarrinho
+    validaCarrinho,
+    validaId
 }

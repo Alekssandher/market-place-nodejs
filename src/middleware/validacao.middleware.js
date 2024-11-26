@@ -1,22 +1,7 @@
 const validaUsuario = (req, res, next) => {
-    
-    let erros = []
-    if (!req.body.nome) {
-        erros.push('nome')
-    }
+    const requiredFields = ['nome', 'email', 'senha', 'imagem'];
+    const erros = requiredFields.filter(field => !req.body[field]);
 
-    if (!req.body.email){
-        erros.push('email')
-    }
-
-    if (!req.body.senha){
-        erros.push('senha')
-    }
-
-    if (!req.body.imagem){
-        erros.push('imagem')
-    }
-    
     const errosLength = erros.length
 
     switch (true) {
@@ -40,27 +25,9 @@ const validaUsuario = (req, res, next) => {
 }
 
 const validaProduto = (req, res, next) => {
-    
-    let erros = []
-    if (!req.body.nome) {
-        erros.push('nome')
-    }
+    const requiredFields = ['nome', 'descricao', 'precoUnitario', 'imagem', 'codigoBarra'];
+    const erros = requiredFields.filter(field => !req.body[field]);
 
-    if (!req.body.descricao){
-        erros.push('descricao')
-    }
-
-    if (!req.body.precoUnitario){
-        erros.push('precoUnitario')
-    }
-
-    if (!req.body.imagem){
-        erros.push('imagem')
-    }
-    if (!req.body.codigoBarra){
-        erros.push('codigoBarra')
-    }
-    
     const errosLength = erros.length
 
     switch (true) {
@@ -90,10 +57,11 @@ const validaCategoria = (req, res, next) => {
 }
 
 const validaPedido = (req, res, next) => {
-    let erros = []
+    
 
-    if (!req.body.precoTotal) erros.push('precoTotal')
-    if (!req.body.frete) erros.push('frete')
+    const requiredFields = ['precoTotal', 'frete'];
+    let erros = requiredFields.filter(field => !req.body[field]);
+
     if (req.body.concluido == undefined) erros.push('concluido')
 
     const errosLength = erros.length
@@ -117,11 +85,9 @@ const validaPedido = (req, res, next) => {
 }
 
 const validaCarrinho = (req, res, next) => {
-    let erros = []
+    const requiredFields = ['precoTotal', 'frete'];
+    const erros = requiredFields.filter(field => !req.body[field]);
 
-    if (!req.body.precoTotal) erros.push('precoTotal')
-    if (!req.body.frete) erros.push('frete')
-        
     const errosLength = erros.length
 
     switch (true) {
@@ -151,11 +117,39 @@ const validaId = (req, res, next) => {
         return res.status(400).send({message: 'O id passado não corresponde ao padrão necessário.'})
     }
 }
+
+const validaLogin = (req, res, next) => {
+
+    if (Object.keys(req.body).length > 2) return res.status(400).send({message: 'Você está passando parâmetros demais, são esperados apenas dois.'})
+    
+    const requiredFields = ['email', 'senha'];
+    const erros = requiredFields.filter(field => !req.body[field]);
+
+    const errosLength = erros.length
+
+    switch (true) {
+        case errosLength === 0:
+            return next()
+
+        case errosLength === 1:
+            
+            return res.status(400).send({message: `O campo ${erros} precisa ser preenchido`})
+
+        case errosLength > 1:
+            
+            return res.status(400).send({message: `Os campos ${erros} precisam ser preenchido`})
+
+        default:
+
+            return res.status(500).send({ message: 'Erro inesperado tente novamente' })
+    }
+}
 module.exports = {
     validaUsuario,
     validaProduto,
     validaCategoria,
     validaPedido, 
     validaCarrinho,
-    validaId
+    validaId,
+    validaLogin
 }

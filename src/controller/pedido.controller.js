@@ -11,7 +11,7 @@ const findPedidoByIdController = async (req, res) => {
 
 const findAllPedidosController = async (req, res) => {
     try {
-        res.status(200).send(await pedidoService.findAllPedidosService())
+        res.status(200).send(await pedidoService.findAllPedidosService(req.query.limit, req.query.offset))
     } catch (error) {
         console.log(`Deu erro no findAllPedidosController: ${error}`)
         res.status(500).send({message: 'Algo deu errado no servidor, tente novamente.'})

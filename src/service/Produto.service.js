@@ -4,8 +4,8 @@ const findProductByIdService = (id) => {
     return Produto.findById(id)
 } 
 
-const findAllProductService = () => {
-    return Produto.find()
+const findAllProductService = (limit, offset) => {
+    return Produto.find().limit(limit).skip(offset)
 }
 
 const createProductService = (body) => {

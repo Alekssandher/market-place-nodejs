@@ -4,9 +4,12 @@ const usuarioController = require('../controller/usuario.controller')
 
 const authmiddleware = require('../middleware/auth.mid')
 const { validaUsuario, validaId } = require('../middleware/validacao.middleware')
+
+const paginacao = require('../middleware/paginacao.middleware')
+
 // GET
 router.get('/findById/:id', authmiddleware, validaId, usuarioController.findUserByIdController)
-router.get('/findAll', authmiddleware, usuarioController.findAllUsersController)
+router.get('/findAll', authmiddleware, paginacao, usuarioController.findAllUsersController)
 
 // POST
 router.post('/create', validaUsuario, usuarioController.createUserController)

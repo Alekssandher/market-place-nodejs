@@ -11,10 +11,6 @@
     },
     "servers": [
         {
-            "url": "http://localhost:3000/",
-            "description": "API de teste local"
-        },
-        {
             "url": "https://market-place-nodejs.vercel.app/",
             "description": "API de produção CLOUD"
         }

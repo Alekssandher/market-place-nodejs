@@ -41,6 +41,6 @@ app.get('/', (req, res) => {
     res.send({message: 'rodando'})
 })
 
-app.listen(port, () => {
-    console.log(`Servidor rodando em https://localhost:${port}`)
-})
+
+
+module.exports = app

@@ -15,7 +15,7 @@
             "description": "API de teste local"
         },
         {
-            "url": "http://aws.amazon.com.br/",
+            "url": "https://market-place-nodejs.vercel.app/",
             "description": "API de produção CLOUD"
         }
     ],

@@ -12,7 +12,7 @@ module.exports = async (req, res, next) => {
     const parts = authHeader.split(' ')
 
     if (parts.length != 2) {
-        console.log('lenght: ', parts.lenght)
+        console.log('lenght: ', parts.length)
         return res.status(401).send({message: 'token invalido'})
     }
 
@@ -24,9 +24,13 @@ module.exports = async (req, res, next) => {
     }
 
     jwt.verify(token, process.env.SECRET, async (error, decoded) => {
+        
         if (error) {
+            if (error.name == 'TokenExpiredError') {
+                return res.status(401).send({message: 'token expirado'})
+            }
             console.log(`erro: ${error}`)
-            return res.status(500).send({message: 'token invalido'})
+            return res.status(401).send({message: 'token invalido'})
         }
 
         const user = await findUserByIdService(decoded.id)

@@ -34,6 +34,13 @@
                     {
                         "in": "query",
                         "schema": {
+                            "type": "string"
+                        },
+                        "name": "q"
+                    },
+                    {
+                        "in": "query",
+                        "schema": {
                             "type": "integer"
                         },
                         "name": "limit"
@@ -121,10 +128,10 @@
                 "tags": [ "Usuário" ],
                 "parameters": [
                     {
-                        "in": "query",
+                        "in": "path",
                         "required": true,
                         "schema": {
-                            "type": "integer"
+                            "type": "string"
                         },
                         "name": "id"
                     }
@@ -194,16 +201,16 @@
                 "summary": "Criar um usuário novo",
                 "description": "Rota responsável por criar um novo usuário no banco de dados com informações passadas pelo endpoint",
                 "tags": [ "Usuário" ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/components/schemas/Usuario"
-                        },
-                        "name": "body"
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Usuario"
+                            }
+                        }
                     }
-                ],
+                },
                 "responses": {
                     "201": {
                         "description": "Retorna o objeto criado no banco",
@@ -246,22 +253,24 @@
                 "tags": [ "Usuário" ],
                 "parameters": [
                     {
-                        "in": "query",
+                        "in": "path",
                         "required": true,
                         "schema": {
-                            "type": "integer"
+                            "type": "string"
                         },
                         "name": "id"
-                    },
-                    {
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/components/schemas/Usuario"
-                        },
-                        "name": "body"
                     }
                 ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Usuario"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "Retorna o objeto atualizado no banco",
@@ -334,10 +343,10 @@
                 "tags": [ "Usuário" ],
                 "parameters": [
                     {
-                        "in": "query",
+                        "in": "path",
                         "required": true,
                         "schema": {
-                            "type": "integer"
+                            "type": "string"
                         },
                         "name": "id"
                     }
@@ -414,22 +423,25 @@
                 "tags": [ "Usuário" ],
                 "parameters": [
                     {
-                        "in": "query",
+                        "in": "path",
                         "required": true,
                         "schema": {
-                            "type": "integer"
+                            "type": "string"
                         },
-                        "name": "id"
-                    },
-                    {
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/components/schemas/UserAddress"
-                        },
-                        "name": "body"
+                        "name": "id",
+                        "description": "ID do usuário"
                     }
                 ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserAddress"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "Retorna o usuário com seu novo endereço",
@@ -490,7 +502,7 @@
                 }
             }
         },
-        "/usuario/removeAddress/{id}": {
+        "/usuario/removeAddress/": {
             "delete": {
                 "security": [
                     {
@@ -500,16 +512,20 @@
                 "summary": "Deleta o endereço ao usuário",
                 "description": "Rota responsável por deletar um endereço mo usuário informado pelo id",
                 "tags": [ "Usuário" ],
-                "parameters": [
-                    {
-                        "in": "query",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        },
-                        "name": "id"
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AddressToDelete"
+                            },
+                            "example": {
+                                "id": "userId",
+                                "addressId": "addressId"
+                            }
+                        }
                     }
-                ],
+                },
                 "responses": {
                     "200": {
                         "description": "Retorna o usuário com seu endereço removido",
@@ -582,22 +598,25 @@
                 "tags": [ "Usuário" ],
                 "parameters": [
                     {
-                        "in": "query",
+                        "in": "path",
                         "required": true,
                         "schema": {
-                            "type": "integer"
+                            "type": "string"
                         },
-                        "name": "id"
-                    },
-                    {
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/components/schemas/ProductFav"
-                        },
-                        "name": "body"
+                        "name": "id",
+                        "description": "ID do usuário"
                     }
                 ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ProductFav"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "Retorna o usuário com seu novo produto favorito",
@@ -658,7 +677,7 @@
                 }
             }
         },
-        "/removeFavProduct/{id}": {
+        "/usuario/removeFavProduct/{id}": {
             "delete": {
                 "security": [
                     {
@@ -670,14 +689,30 @@
                 "tags": [ "Usuário" ],
                 "parameters": [
                     {
-                        "in": "query",
+                        "in": "path",
                         "required": true,
                         "schema": {
-                            "type": "integer"
+                            "type": "string"
                         },
                         "name": "id"
                     }
                 ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "string",
+                                        "example": "Product Id"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "Retorna o usuário com seu produto favorito removido",
@@ -752,6 +787,9 @@
             "Usuario": {
                 "type": "object",
                 "properties": {
+                    "_id": {
+                        "type": "string"
+                    },
                     "nome": {
                         "type": "string"
                     },
@@ -810,40 +848,49 @@
                 }
             },
             "UserAddress": {
-                "type": "array",
-                "items": {
-                    "properties": {
-                        "rua": {
-                            "type": "string"
-                        },
-                        "numero": {
-                            "type": "number"
-                        },
-                        "complemento": {
-                            "type": "string"
-                        },
-                        "CEP": {
-                            "type": "string"
-                        },
-                        "createdAt": {
-                            "type": "string"
-                        }
-
+                "type": "object",
+                "properties": {
+                    "rua": {
+                        "type": "string"
+                    },
+                    "numero": {
+                        "type": "number"
+                    },
+                    "complemento": {
+                        "type": "string"
+                    },
+                    "cep": {
+                        "type": "string"
                     }
+
                 }
+                
             },
             "ProductFav": {
-                "type": "array",
-                "items": {
-                    "properties": {
-                        "id": {
-                            "type": "string"
-                        },
-                        "createdAt": {
-                            "type": "string"
-                        }
+                "type": "object",                
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string"
                     }
                 }
+                
+            },
+            "AddressToDelete": {
+                "type": "object",                
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "ID do usuário ao qual o endereço pertence"
+                    },
+                    "addressId": {
+                        "type": "string",
+                        "description": "ID do endereço a ser removido"
+                    }
+                }
+                
             }
         }
     }

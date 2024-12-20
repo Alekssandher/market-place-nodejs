@@ -4,7 +4,7 @@ require('dotenv').config();
 const { SECRET } = process.env;
 
 const loginService = (email) => Usuario.findOne({email: email}).select('senha')
-const generateToken = (userId) => jwt.sign({id: userId}, SECRET)
+const generateToken = (userId) => jwt.sign({id: userId}, SECRET, { expiresIn: '1h' })
 
 module.exports = {
     loginService,

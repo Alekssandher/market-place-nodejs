@@ -30,6 +30,7 @@ const validaEndereco = (req, res, next) => {
 
     const errosLength = erros.length
 
+    console.log(req.body)
     
     switch (true) {
         case errosLength === 0:

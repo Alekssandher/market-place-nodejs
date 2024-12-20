@@ -26,7 +26,16 @@ const findUserByIdController = async (req, res) => {
 const findAllUsersController = async (req, res) => {
     try {
 
-        return res.status(200).send(await userService.findAllUsersService(req.query.limit, req.query.offset))
+       
+        const { q, limit, offset } = req.query;
+
+        const filters = {};
+
+        if (q) {
+            filters.nome = { $regex: q, $options: 'i' }; 
+        }
+
+        return res.status(200).send(await userService.findAllUsersService(filters, limit, offset))
 
     }catch(error) {
 
@@ -70,13 +79,14 @@ const removeUserController = async (req, res) => {
     try {
 
         const deletedUser = await userService.removeUserService(req.params.id)
-        
+
+        console.log(deletedUser)
         if (deletedUser == null) {
             
             return res.status(404).send({message: 'usuario não encontrado'})
         } else {
        
-            return res.status(200).send({message: 'usuario deletado'})
+            return res.status(200).send(deletedUser)
         }
 
     }catch(error) {
@@ -94,7 +104,7 @@ const addUserAddressController = async (req, res) => {
 
         console.log(endereco)
 
-        if (endereco) {
+        if (!endereco) {
             res.status(400).send({message: 'endereço não adicionado, algo deu errado'})
            
         }else {
@@ -111,16 +121,19 @@ const addUserAddressController = async (req, res) => {
 const removeAddressController = async (req, res) => {
     try {
 
-        
+        console.log("Recebido: ", req.body)
         const endereco = await userService.removeAddressService(req.body.id, req.body.addressId)
-        console.log(endereco)
+
+        if(!endereco) return res.status(400).send({message: 'Endereço não encontrado'})
+
         const found = endereco.enderecos.some(endereco => endereco._id.toString() === req.body.addressId);
+        console.log("Encontrado? ", found)
 
         if (found) {
-            res.status(200).send({message: 'endereço removido com sucesso'})
+            res.status(200).send(endereco)
         }else {
 
-            res.status(400).send({message: 'endereço não encontrado'})
+            res.status(400).send({message: 'Endereço não encontrado'})
         }
 
     }catch(error) {
@@ -144,7 +157,8 @@ const addUserFavProductController = async (req, res) => {
 
 const removeUserFavProductController = async (req, res) => {
     try {
-        res.status(201).send(await userService.removeFavProductService(req.params.id, req.body))
+        console.log(req.body)
+        return res.status(200).send(await userService.removeFavProductService(req.params.id, req.body))
     }catch(error) {
 
         console.log(`erro: ${error.message}`)

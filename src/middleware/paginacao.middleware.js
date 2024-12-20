@@ -1,12 +1,11 @@
 module.exports = (req, res, next) => {
-    let { limit, offset } = req.query
+    let { q = "", limit = 10, offset = 0 } = req.query;
 
     limit = Number(limit)
     offset = Number(offset)
+    q = String(q)
 
-    !limit ? limit = 10: null
-    !offset ? offset = 0: null
-
+    req.query.q = q
     req.query.limit = limit
     req.query.offset = offset
 

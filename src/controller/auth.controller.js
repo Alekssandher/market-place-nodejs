@@ -7,16 +7,14 @@ const login = async (req, res) => {
         const user = await authService.loginService(email);
 
         if (!user) {
-            return res.status(400).send({ message: 'Usuário não encontrado' });
+            return res.status(400).send({ message: 'Usuário ou senha incorretos' });
         }
 
-        // Verifica se a senha está correta usando bcrypt
         const senhaValida = await bcrypt.compare(senha, user.senha);
         if (!senhaValida) {
-            return res.status(400).send({ message: 'Senha inválida' });
+            return res.status(400).send({ message: 'Usuário ou senha incorretos' });
         }
 
-        // Gera um token para o usuário autenticado
         const token = authService.generateToken(user._id);
 
         res.send({ email, token });

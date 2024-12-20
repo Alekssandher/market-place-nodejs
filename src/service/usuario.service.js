@@ -1,14 +1,15 @@
 
 const Usuario = require('../model/Usuario')
+const bcrypt = require('bcrypt')
 
 const findUserByIdService = (id) => {
 
     return Usuario.findById(id)
 }
 
-const findAllUsersService = (limit, offset) => {
+const findAllUsersService = (filters, limit, offset) => {
 
-    return Usuario.find().limit(limit).skip(offset)
+    return Usuario.find(filters).limit(limit).skip(offset)
 }
 
 const createUserService = (body) => {
@@ -16,7 +17,10 @@ const createUserService = (body) => {
     return Usuario.create(body)
 }
 
-const updateUserService = (id, body) => {
+const updateUserService = async (id, body) => {
+    if (body.senha) {
+        body.senha = await bcrypt.hash(body.senha, 10);
+    }
     return Usuario.findByIdAndUpdate(id, body, {returnDocument: 'after'})
 }
 
